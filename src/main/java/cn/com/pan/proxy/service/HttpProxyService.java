@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.server.ServerWebExchange;
 
-import com.alibaba.fastjson.JSONObject;
-
 import reactor.core.publisher.Mono;
 
 @Service
@@ -28,7 +26,7 @@ public class HttpProxyService extends GlobalService {
 
 		String url = "http://ip:port" + path;// 转发规则自定义
 
-		return webClient.method(request.getMethod()).uri(url, new JSONObject())
+		return webClient.method(request.getMethod()).uri(URI.create(url))
 				.headers(headers -> headers.addAll(requestHeaders))
 				.body(Mono.just(requestBody == null ? new byte[0] : requestBody), byte[].class).exchange()
 				.flatMap(clientResponse -> clientResponse.toEntity(byte[].class));

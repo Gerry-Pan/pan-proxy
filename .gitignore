@@ -1,9 +1,12 @@
 HELP.md
-target/
 /logs/
+target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
+
+mvnw
+mvnw.cmd
 
 ### STS ###
 .apt_generated
@@ -13,6 +16,7 @@ target/
 .settings
 .springBeans
 .sts4-cache
+.mvn
 
 ### IntelliJ IDEA ###
 .idea
